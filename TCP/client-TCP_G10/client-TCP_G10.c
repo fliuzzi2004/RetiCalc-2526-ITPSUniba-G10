@@ -35,7 +35,6 @@ int main(void)
 	sad.sin_port = htons(TARGET_PORT);
 
 	// Creazione del socket
-	// PF_INET (IPv4), SOCK_STREAM (TCP), IPPROTO_TCP
 	MyCSocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (MyCSocket == INVALID_SOCKET)
 	{
@@ -73,17 +72,15 @@ int main(void)
 		{
 			exit = 1;
 			printf("Inserisci messaggio: ");fflush(stdout);
-			// Acquisizione input (fgets)
 			if (fgets(input_buffer, BUFSIZE, stdin) == NULL) {
 				break; // Errore di lettura o EOF
 			}
 		}
 
-		// Pulizia del \n e Gestione della Lunghezza
 		size_t len = strlen(input_buffer);
 		if (len > 0 && input_buffer[len - 1] == '\n') {
 			input_buffer[len - 1] = '\0';
-			len--; // Aggiorna la lunghezza senza il '\n'
+			len--;
 		}
 
 		// Invio al Server
