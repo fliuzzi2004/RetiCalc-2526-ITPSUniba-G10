@@ -1,5 +1,6 @@
 # RetiCalc-2526-ITPSUniba-G10
 Francesco Liuzzi
+
 Il progetto implementa due sistemi Client/Server (TCP e UDP) che consentono lo scambio di stringhe di caratteri tra due host. 
 Il server elabora il messaggio ricevuto eliminando tutte le vocali prima di reinviarle al client.
 
