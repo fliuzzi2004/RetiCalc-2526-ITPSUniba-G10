@@ -66,7 +66,6 @@ int main() {
 	echoStringLen = strlen(echoString);
 	sendto(sock, echoString, echoStringLen, 0, (struct sockaddr*)&echoServAddr, sizeof(echoServAddr));
 
-	// RICEVI RISPOSTA PER "HELLO" (così pulisci il buffer e passi oltre)
 	fromSize = sizeof(fromAddr);
 	recvfrom(sock, echoBuffer, ECHOMAX, 0, (struct sockaddr*)&fromAddr, &fromSize);
 	// Non la stampiamo se non ti serve
@@ -78,7 +77,6 @@ int main() {
 
 	sendto(sock, echoString, echoStringLen, 0, (struct sockaddr*)&echoServAddr, sizeof(echoServAddr));
 
-	// RICEVI RISPOSTA PER L'INPUT UTENTE
 	respStringLen = recvfrom(sock, echoBuffer, ECHOMAX - 1, 0, (struct sockaddr*)&fromAddr, &fromSize);
 	echoBuffer[respStringLen] = '\0';
 
