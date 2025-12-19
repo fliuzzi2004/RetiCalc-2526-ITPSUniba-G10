@@ -5,13 +5,13 @@ Il server elabora il messaggio ricevuto eliminando tutte le vocali prima di rein
 
 ------- GUIDA ALL'ESECUZIONE PASSO-PASSO TCP -------
 FASE 1: Avvio del Server
-> Eseguire: server-TCP_G10.exe
+Eseguire: server-TCP_G10.exe
 Prompt Server:
   Server in ascolto sulla porta 27020
   In attesa di connessione di client...
 
 FASE 2: Connessione Client e scambio di messaggi
-> Eseguire: client-TCP_G10.exe
+Eseguire: client-TCP_G10.exe
 Prompt Client:
   In attesa di connessione con 127.0.0.1:27020...
   Connessione riuscita
@@ -45,12 +45,12 @@ Prompt Server:
 
 ------- GUIDA ALL'ESECUZIONE PASSO-PASSO UDP ------- 
 FASE 1: Avvio del Server UDP
-> Eseguire: server-UDP_G10.exe
+Eseguire: server-UDP_G10.exe
 Prompt Server:
   Server in ascolto sulla porta 3700
 
 FASE 2: Configurazione Client (Risoluzione DNS tramite file "hosts")
-> Eseguire: client-UDP_G10.exe
+Eseguire: client-UDP_G10.exe
 Prompt Client:
   Inserisci nome host: reti
   Inserisci porta host: 3700
