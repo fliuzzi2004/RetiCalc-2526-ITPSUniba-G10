@@ -67,8 +67,8 @@ int main() {
 		// RICEZIONE
 		cliAddrLen = sizeof(echoClntAddr);
 		recvMsgSize = recvfrom(sock, echoBuffer, ECHOMAX - 1, 0, (struct sockaddr*)&echoClntAddr, &cliAddrLen);
-		echoBuffer[recvMsgSize] = '\0'; // Terminatore fondamentale
-		// La parte critica per gethostbyaddr è solo l'indirizzo IP
+		echoBuffer[recvMsgSize] = '\0';
+		
 		struct sockaddr_in *sin = (struct sockaddr_in *) &echoClntAddr;
 
 		struct hostent *host;
@@ -78,11 +78,9 @@ int main() {
 
 		printf("Ricevuto: %s\n", echoBuffer);
 
-		// MODIFICA
 		RemoveVocali(echoBuffer);
 
-		// INVIO CORRETTO
-		int newLen = strlen(echoBuffer); // La lunghezza è cambiata dopo RemoveVocali!
+		int newLen = strlen(echoBuffer);
 		if (sendto(sock, echoBuffer, newLen, 0, (struct sockaddr *)&echoClntAddr, sizeof(echoClntAddr)) != newLen)
 			ErrorHandler("sendto() failed");
 	}
