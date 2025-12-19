@@ -4,6 +4,7 @@ Il progetto implementa due sistemi Client/Server (TCP e UDP) che consentono lo s
 Il server elabora il messaggio ricevuto eliminando tutte le vocali prima di reinviarle al client.
 
 ------- GUIDA ALL'ESECUZIONE PASSO-PASSO TCP -------
+
 FASE 1: Avvio del Server
 Eseguire: server-TCP_G10.exe
 Prompt Server:
@@ -44,6 +45,7 @@ Prompt Server:
   In attesa di connessione di client...
 
 ------- GUIDA ALL'ESECUZIONE PASSO-PASSO UDP ------- 
+
 FASE 1: Avvio del Server UDP
 Eseguire: server-UDP_G10.exe
 Prompt Server:
