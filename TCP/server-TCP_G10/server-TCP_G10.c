@@ -2,7 +2,7 @@
 #include <ws2tcpip.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h> // Necessario per strlen
+#include <string.h> 
 
 #define SERVER_PORT 27020
 #define BACKLOG 6 // Lunghezza massima della coda di connessioni in sospeso
@@ -13,7 +13,6 @@ void ClearWinSock() {
 	printf("\nWinsock cleanup completed.\n");fflush(stdout);
 }
 
-// Funzione di gestione degli errori migliorata
 void ErrorHandler(const char *errorMessage) {
 	fprintf(stderr, "%s (Winsock Error Code: %d)\n", errorMessage, WSAGetLastError());fflush(stderr);
 }
@@ -35,7 +34,7 @@ void RemoveVocali(char *buffer) {
 	buffer[write_index] = '\0';
 }
 
-// Funzione di gestione della comunicazione con il singolo client
+
 void HandleTCPClient(SOCKET clientSocket, struct sockaddr_in clientAddress) {
 	char buffer[BUFSIZE];
 
@@ -47,9 +46,9 @@ void HandleTCPClient(SOCKET clientSocket, struct sockaddr_in clientAddress) {
 	// Ciclo WHILE per gestire l'invio e la ricezione continua
 	while ((recvMsgSize = recv(clientSocket, buffer, BUFSIZE - 1, 0)) > 0)
 	{
-		// 1. Ricezione e Terminazione
+		
 		buffer[recvMsgSize] = '\0';
-		nMessaggiRicevuti++;	// Incremento del contatore
+		nMessaggiRicevuti++;	
 
 		printf("Ho ricevuto seguente messaggio: %s\n", buffer); fflush(stdout);
 
@@ -84,7 +83,6 @@ int main(void)
 	SOCKET socket_server;
 	struct sockaddr_in sad;
 
-	// Configurazione dell'indirizzo del server (localhost)
 	sad.sin_family = AF_INET;
 	sad.sin_addr.s_addr = inet_addr("127.0.0.1");
 	sad.sin_port = htons(SERVER_PORT);
@@ -122,27 +120,27 @@ int main(void)
 		return -1;
 	}
 
-	struct sockaddr_in cad; // Struttura per l'indirizzo del client
+	struct sockaddr_in cad; 
 	SOCKET clientSocket;
 	int clientLen;
 	while (1) {
 		clientLen = sizeof(cad);
 
-		// Accetta la connessione in entrata (bloccante)
+		
 		printf("Server in ascolto sulla porta %d\n", SERVER_PORT);fflush(stdout);
 		printf("In attesa di connessione di client...\n");fflush(stdout);
 		clientSocket = accept(socket_server, (struct sockaddr *)&cad, &clientLen);
 
 		if (clientSocket == INVALID_SOCKET) {
 			ErrorHandler("accept() failed. Continuing to listen...");
-			continue; // Continua ad ascoltare in caso di errore
+			continue; 
 		}
 
 		printf("Client connesso\n");fflush(stdout);
 		HandleTCPClient(clientSocket, cad);
 	}
 
-	// Pulizia del socket server e di Winsock
+	
 	closesocket(socket_server);
 	ClearWinSock();
 
