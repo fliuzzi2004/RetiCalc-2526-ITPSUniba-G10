@@ -64,7 +64,6 @@ int main() {
 	while(1) {
 		printf("Server in ascolto sulla porta %d\n", PORT);fflush(stdout);
 
-		// RICEZIONE
 		cliAddrLen = sizeof(echoClntAddr);
 		recvMsgSize = recvfrom(sock, echoBuffer, ECHOMAX - 1, 0, (struct sockaddr*)&echoClntAddr, &cliAddrLen);
 		echoBuffer[recvMsgSize] = '\0';
